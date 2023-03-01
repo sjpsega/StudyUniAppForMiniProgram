@@ -1,6 +1,7 @@
 <template>
 	<view class="content">
-		<input class="todo-input" focus placeholder="添加 Todo" :value="inputValue" @confirm="addTodo"/>
+		<!-- input 值绑定，需要使用 v-model 指令  -->
+		<input class="todo-input" focus placeholder="添加 Todo" v-model="inputValue" @confirm="addTodo"/>
 		<checkbox-group class="todo-item-container" @change="checkboxgroupChangeHandler">
 			<label class="todo-item" v-for="(todo, index) in todos" :key="todo.time">
 				<checkbox class="todo-item-checkbox" :checked="todo.isdone" :value="todo.time"></checkbox>
@@ -12,7 +13,6 @@
 
 <script>
 	export default {
-		// @FIXME: input 输入框，数据录入后，清空 input。当 inputValue 非空，无问题；当 inputValue 为空，就无法清空 input。
 		data() {
 			return {
 				todos:[
